@@ -1,1 +1,4 @@
-pytest-playwright
+playwright.sync_api
+re
+time
+configparser

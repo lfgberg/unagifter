@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 __pycache__/
+.pytest_cache/
+test.config
