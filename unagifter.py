@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright, Playwright, expect
 import re
 import time
-import configparser
+import json
 
 # TODO:
 # - handle expect() errors

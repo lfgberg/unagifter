@@ -132,3 +132,4 @@ dist
 __pycache__/
 .pytest_cache/
 test.config
+test-config.json

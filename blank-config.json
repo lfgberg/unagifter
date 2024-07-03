@@ -1,0 +1,22 @@
+{
+    "usps": {
+        "username": "",
+        "password": "",
+        "email": ""
+    },
+    "address": {
+        "firstName": "",
+        "lastName": "",
+        "addressLine1": "",
+        "addressLine2": "",
+        "city": "",
+        "state": "",
+        "zip": "",
+        "country": "",
+        "phone": "",
+        "email": ""
+    },
+    "config": {
+        "headless": true
+    }
+}
