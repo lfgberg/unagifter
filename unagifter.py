@@ -13,22 +13,54 @@ import json
 # - add a scientology dvd option
 
 def main(playwright: Playwright):
-    # Pull in config
-    config = configparser.ConfigParser()
-    # TODO: add like a default config name or a supplied one and have help popup if blank is used
-    config.read('test.config')
+    # Import product catalog & config
+    catalog = read_json("products.json")
+    config = read_json("test-config.json") # TODO: Validate config
+    validate_config(config, catalog)
 
     # Setup browser
     firefox = playwright.firefox
     browser = firefox.launch(headless=False)
     page = browser.new_page()
 
+    # Place the orders
     login(page, config)
     empty_cart(page)
     add_product(page, config)
     checkout(page, config)
-    time.sleep(5)
+
     browser.close()
+
+def validate_config(config, catalog):
+    # Validate basic info
+    assert(validate_email(config['usps']['email']) == True, "Invalid USPS email.")
+    assert(validate_email(config['address']['email']) == True, "Invalid recipient email.")
+    assert(validate_phone_number(config['address']['phone']) == True, "Invalid recipient phone number.")
+
+    # Validate order configuration
+    for product in config['order']:
+        if (catalog.has_key(product) == False):
+            raise Exception("Product SKU not found in catalog.")
+
+def validate_phone_number(phoneNumber):
+    regex = r'(0|91)?[6-9][0-9]{9}'
+    if(re.fullmatch(regex, phoneNumber)):
+        return True
+    else:
+        return False
+
+def validate_email(email):
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    if(re.fullmatch(regex, email)):
+        return True
+    else:
+        return False
+
+def read_json(filename):
+    with open(filename, "r") as jsonfile:
+        data = json.load(jsonfile)
+        jsonfile.close()
+        return data
 
 def add_product(page, config):
     # Check to see if we're on the page via title
@@ -50,16 +82,16 @@ def checkout(page, config):
     # TODO: check to see if address is already in the book, select if so, add new addy if not
     page.get_by_role("link", name="Edit").click()
 
-    page.locator('id=atg_store_firstNameInput').fill(config['ADDRESS']['firstName'])
-    page.locator('id=atg_store_lastNameInput').fill(config['ADDRESS']['lastName'])
-    page.locator('id=atg_store_streetAddressInput').fill(config['ADDRESS']['addressLine1'])
-    page.locator('id=atg_store_streetAddressOptionalInput').fill(config['ADDRESS']['addressLine2'])
-    page.locator('id=atg_store_localityInput').fill(config['ADDRESS']['city'])
-    page.locator('id=atg_store_stateSelect').select_option(config['ADDRESS']['state'])
-    page.locator('id=atg_store_postalCodeInput').fill(config['ADDRESS']['zip'])
+    page.locator('id=atg_store_firstNameInput').fill(config['address']['firstName'])
+    page.locator('id=atg_store_lastNameInput').fill(config['address']['lastName'])
+    page.locator('id=atg_store_streetAddressInput').fill(config['address']['addressLine1'])
+    page.locator('id=atg_store_streetAddressOptionalInput').fill(config['address']['addressLine2'])
+    page.locator('id=atg_store_localityInput').fill(config['address']['city'])
+    page.locator('id=atg_store_stateSelect').select_option(config['address']['state'])
+    page.locator('id=atg_store_postalCodeInput').fill(config['address']['zip'])
     page.locator('id=atg_store_countryNameSelect').select_option('United States') # Only domestic shipments are allowed
-    page.locator('id=atg_store_telephoneInput').fill(config['ADDRESS']['phone'])
-    page.locator('id=atg_store_emailInput').fill(config['ADDRESS']['email'])
+    page.locator('id=atg_store_telephoneInput').fill(config['address']['phone'])
+    page.locator('id=atg_store_emailInput').fill(config['address']['email'])
 
     time.sleep(1)
     page.get_by_role("button", name="Save Address").click()
@@ -86,8 +118,8 @@ def login(page, config):
     expect(page).to_have_title(re.compile("Sign In"))
 
     # Enter login info & login
-    page.locator('id=username').fill(config['USPS']['username'])
-    page.locator('id=password').fill(config['USPS']['password'])
+    page.locator('id=username').fill(config['usps']['username'])
+    page.locator('id=password').fill(config['usps']['password'])
     page.get_by_role("button", name="Sign In").click()
 
     # Delay to allow login - we can play w this value
@@ -95,7 +127,7 @@ def login(page, config):
 
     # Check to see if we logged in successfully and have the right login info
     page.goto("https://store.usps.com/store/myaccount/profile.jsp")
-    expect(page.get_by_text(config['USPS']['email'], exact=True)).to_be_visible()
+    expect(page.get_by_text(config['usps']['email'], exact=True)).to_be_visible()
 
 with sync_playwright() as playwright:
     main(playwright)

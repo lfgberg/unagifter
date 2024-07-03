@@ -1,77 +1,90 @@
 {
     "FORM_3816": {
+        "SKU": "",
         "name": "Collect on Delivery Forms, Pack of 10",
         "url": "https://store.usps.com/store/product/collect-on-delivery-forms-S_FORM_3816",
         "min": 1,
         "max": 75
     },
     "FORM_6182": {
+        "SKU": "",
         "name": "Commercial Invoice PS Form 6182, Pack of 10",
         "url": "https://store.usps.com/store/product/commercial-invoice-ps-form-6182-P_FORM_6182",
         "min": 1,
         "max": 10
     },
     "LABEL139": {
+        "SKU": "",
         "name": "Cremated Remains Labels, Roll of 100",
         "url": "https://store.usps.com/store/product/cremated-remains-labels-P_LABEL139",
         "min": 1,
         "max": 5
     },
     "LABEL_107": {
+        "SKU": "",
         "name": "Priority Mail Sticker Labels, Roll of 250",
         "url": "https://store.usps.com/store/product/priority-mail-sticker-labels-P_LABEL_107",
         "min": 1,
         "max": 1
     },
     "LABEL_107_R": {
+        "SKU": "",
         "name": "Priority Mail Sticker Labels, Roll of 1,000",
         "url": "https://store.usps.com/store/product/priority-mail-sticker-labels-P_LABEL_107_R",
         "min": 1,
         "max": 3
     },
     "LABEL11HFPU": {
+        "SKU": "",
         "name": "Priority Mail Sticker Labels, Roll of 1,000",
         "url": "https://store.usps.com/store/product/priority-mail-express-hold-for-pickup-labels-P_LABEL11HFPU",
         "min": 1,
         "max": 5
     },
     "BOX_CREKIT2": {
+        "SKU": "",
         "name": "Cremated Remains Kit 2",
         "url": "https://store.usps.com/store/product/cremated-remains-kit-2-P_BOX_CREKIT2",
         "min": 1,
         "max": 5
     },
     "LABEL_106": {
+        "SKU": "",
         "name": "Priority Mail Shipping Labels, Pack of 10",
         "url": "https://store.usps.com/store/product/priority-mail-shipping-labels-P_LABEL_106",
         "min": 1,
         "max": 10
     },
     "FORM3800N": {
+        "SKU": "",
         "name": "Certified Mail Labels, Roll of 600",
         "url": "https://store.usps.com/store/product/certified-mail-labels-P_FORM3800N",
         "min": 1,
         "max": 1
     },
     "LABEL_11FGG1": {
+        "SKU": "LABEL_11FGG1",
         "name": "Global Express Guarenteed Mailing Labels, Pack of 10",
         "url": "https://store.usps.com/store/product/global-express-guaranteed-mailing-labels-P_LABEL_11FGG1",
         "min": 1,
         "max": 5
     },
     "LABEL200N": {
+        "SKU": "LABEL200N",
         "name": "Registered Mail Labels, Roll of 600",
         "url": "https://store.usps.com/store/product/registered-mail-labels-P_LABEL200N",
         "min": 1,
         "max": 1
     },
     "Label_035CH": {
+        "SKU": "Label_035CH",
         "name": "Caution Heavy Sticker Labels, Roll of 500",
         "url": "https://store.usps.com/store/product/caution-heavy-sticker-labels-P_Label_035CH",
         "min": 1,
         "max": 2
     },
     "1098SX": {
+        "SKU": "1098SX",
         "name": "Dual-Use Priority Mail/Priority Mail Express Small Tube Box",
         "format": {
             "10": {
@@ -88,18 +101,21 @@
         "url": "https://store.usps.com/store/product/dual-use-priority-mailpriority-mail-express-small-tube-box-P_O_1098S"
     },
     "BOX_CREKIT1": {
+        "SKU": "BOX_CREKIT1",
         "name": "Cremated Remains Kit 1",
         "url": "https://store.usps.com/store/product/cremated-remains-kit-1-P_BOX_CREKIT1",
         "min": 1,
         "max": 5
     },
     "LABEL_127_R": {
+        "SKU": "LABEL_127_R",
         "name": "Priority Mail Express Sticker Labels, Roll of 1,000",
         "url": "https://store.usps.com/store/product/priority-mail-express-sticker-labels-P_LABEL_127_R",
         "min": 1,
         "max": 5
     },
     "O_1097X": {
+        "SKU": "O_1097X",
         "name": "Priority Mail Medium Box Option 2",
         "format": {
             "10": {
@@ -116,6 +132,7 @@
         "url": "https://store.usps.com/store/product/priority-mail-medium-box-option-2-P_O_1097"
     },
     "EMBOX1X": {
+        "SKU": "EMBOX1X",
         "name": "Priority Mail Express Medium Box",
         "format": {
             "10": {
@@ -132,6 +149,7 @@
         "url": "https://store.usps.com/store/product/priority-mail-express-medium-box-P_EMBOX1"
     },
     "FORM_3800": {
+        "SKU": "FORM_3800",
         "name": "Certified Mail Receipt Forms, Pack of 10",
         "url": "https://store.usps.com/store/product/certified-mail-receipt-forms-P_FORM_3800",
         "min": 1,
