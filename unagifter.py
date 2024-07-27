@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright, Playwright, expect
 import re
 import time
+import argparse
 import json
 
 # TODO:
@@ -38,9 +39,15 @@ def validate_config(config, catalog):
     assert(validate_phone_number(config['address']['phone']) == True, "Invalid recipient phone number.")
 
     # Validate order configuration
-    for product in config['order']:
-        if (catalog.has_key(product) == False):
+    for product in config['usps-order']:
+        # Ensure product exists
+        if (not product in catalog):
             raise Exception("Product SKU not found in catalog.")
+        
+        # Verify quantities
+        print(product['quantity'])
+        if (product['quantity'] <= 0):
+            raise Exception("Invalid order quantity.")
 
 def validate_phone_number(phoneNumber):
     regex = r'(0|91)?[6-9][0-9]{9}'

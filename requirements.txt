@@ -1,4 +1,2 @@
-playwright.sync_api
-re
-time
-json
+playwright
+argparse
